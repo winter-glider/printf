@@ -5,12 +5,15 @@
   *@str: the string to be printed
   *Return: nothing
   */
-void print(char *str)
+int print(char *str)
 {
+	int i = 0;
+
 	while (*str != '\0')
 	{
-		write_char(*str);
+		i += write_char(*str);
 		str++;
 	}
 
+	return (i);
 }
