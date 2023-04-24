@@ -8,7 +8,7 @@
   */
 int print_chars(const char *format, va_list args)
 {
-	char *sd;
+	char *s;
 	int total = 0, i = 0;
 
 	while (format[i] != '\0')

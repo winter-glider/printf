@@ -9,5 +9,6 @@
  */
 int _writechar(char c)
 {
-	return (buffer(c));
+	return (write(1, &s, 1));
 }
+
