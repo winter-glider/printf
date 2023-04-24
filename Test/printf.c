@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 		    else if (format[i] == '%')
 		    {
 			    write_char('%');
+			    return (- 1);
 		    }
 	    }
 	    else
