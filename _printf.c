@@ -8,7 +8,7 @@
   */
 int print_chars(const char *format, va_list args)
 {
-	char *s;
+	int d i*;
 	int total = 0, i = 0;
 
 	while (format[i] != '\0')
@@ -17,31 +17,29 @@ int print_chars(const char *format, va_list args)
 		{
 			i++;
 			if (format[i] == '%' || format[i] == 'd'||
-					format[i] == 's')
+					format[i] == 'i')
 			{
 				if (format[i] == 'd')
 				{
-					c = va_arg(args, int);
-					total += write_char(d);
+					d = va_arg(args, int);
+					total += _writechar(d);
 				}
-				else if (format[i] == 's')
+				else if (format[i] == 'i')
 				{
-					s = va_arg(args, char *);
-					if (!s)
-						s = "(null)";
+					i = va_arg(args, char *);
 					total += print(s);
 				}
 				else if (format[i] == '%')
-					total += write_char('%');
+					total += _writechar('%');
 			}
 			else
 			{
-				total += write_char('%');
-				total += write_char(format[i]);
+				total += _writechar('%');
+				total += _writechar(format[i]);
 			}
 		}
 		else
-			total += write_char(format[i]);
+			total += _writechar(format[i]);
 		i++;
 	}
 	return (total);
