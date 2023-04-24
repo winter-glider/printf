@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdarg.h>
-
 /**
   *_printf - mimics printf specifiers s,c and %
   *@format: number of arguments
@@ -15,31 +14,45 @@ int _printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(args, format);
+	if (format[i] == '%' && format[i + 1] == '\0')
+		return (-1);
+
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] == '\0')
-			return (-1);
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			i++;
-			if (format[i] == 'c')
+			if (format[i] == '%' || format[i] == 'c' ||
+					format[i] == 's')
 			{
-				c = va_arg(args, int);
-				total += write_char(c);
+				if (format[i] == 'c')
+				{
+					c = va_arg(args, int);
+					total += write_char(c);
+				}
+				else if (format[i] == 's')
+				{
+					s = va_arg(args, char *);
+					if (!s)
+						s = "(null)";
+					total += print(s);
+				}
+				else if (format[i] == '%')
+					total += write_char('%');
+				i++;
 			}
-			else if (format[i] == 's')
+			else
 			{
-				s = va_arg(args, char *);
-				if (!s)
-					s = "(null)";
-				total += print(s);
-			}
-			else if (format[i] == '%')
 				total += write_char('%');
+				total += write_char(format[i]);
+				i++;
+			}
 		}
 		else
+		{
 			total += write_char(format[i]);
-		i++;
+			i++;
+		}
 	}
 	va_end(args);
 	return (total);
