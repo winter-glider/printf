@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
-#include <stddef.h>
+
 /**
   *_printf - mimics printf specifiers s,c and %
   *@format: number of arguments
@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(args, char *);
-				if (s == NULL)
+				if (!s)
 					s = "(null)";
 				total += print(s);
 			}
