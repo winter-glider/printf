@@ -9,6 +9,9 @@ int print(char *str)
 {
 	int i = 0;
 
+	if (!str)
+		str = "(null)";
+
 	while (*str != '\0')
 	{
 		i += write_char(*str);
