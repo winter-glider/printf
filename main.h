@@ -8,5 +8,6 @@ int print(char *str);
 int write_char(char s);
 int print_chars(const char *str, va_list args);
 int _print_chars(const char *str, va_list args);
+int print_number(int n);
 
 #endif
