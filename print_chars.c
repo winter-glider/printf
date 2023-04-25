@@ -9,7 +9,7 @@
 int print_chars(const char *format, va_list args)
 {
 	char *s, c;
-	int total = 0, i = 0, d, k;
+	int total = 0, i = 0, k;
 
 	while (format[i] != '\0')
 	{
@@ -30,11 +30,6 @@ int print_chars(const char *format, va_list args)
 					if (!s)
 						s = "(null)";
 					total += print(s);
-				}
-				else if (format[i] == 'i')
-				{
-					k = va_arg(args, int);
-					total += write_char(k);
 				}
 				else if (format[i] == '%')
 					total += write_char('%');
