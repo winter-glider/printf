@@ -9,7 +9,7 @@
 int print_chars(const char *format, va_list args)
 {
 	char *s, c;
-	int total = 0, i = 0, k;
+	int total = 0, i = 0;
 
 	while (format[i] != '\0')
 	{
